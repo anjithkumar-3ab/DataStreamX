@@ -1,15 +1,12 @@
-import sqlite3
 import os
+import sqlite3
 
 
 class InsertManager:
 
     def __init__(self, database_name: str):
-
-        self.db_path = os.path.join(
-            "databases",
-            f"{database_name}.db"
-        )
+        os.makedirs("databases", exist_ok=True)
+        self.db_path = os.path.join("databases", f"{database_name}.db")
 
     def insert_row(self, table_name: str, row: dict):
 

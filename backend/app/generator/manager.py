@@ -2,6 +2,10 @@ from app.generator.datatypes.text import TextGenerator
 from app.generator.datatypes.integer import IntegerGenerator
 from app.generator.datatypes.real import RealGenerator
 from app.generator.datatypes.email import EmailGenerator
+from app.generator.datatypes.phone import PhoneGenerator
+from app.generator.datatypes.boolean import BooleanGenerator
+from app.generator.datatypes.date import DateGenerator
+from app.generator.datatypes.datetime import DateTimeGenerator
 
 class GeneratorManager:
 
@@ -13,7 +17,13 @@ class GeneratorManager:
 
         "REAL": RealGenerator,
         "FLOAT": RealGenerator,
-        "DOUBLE": RealGenerator
+        "DOUBLE": RealGenerator,
+
+        "EMAIL": EmailGenerator,
+        "PHONE": PhoneGenerator,
+        "BOOLEAN": BooleanGenerator,
+        "DATE": DateGenerator,
+        "DATETIME": DateTimeGenerator,
     }
 
     @classmethod
