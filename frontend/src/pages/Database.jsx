@@ -17,34 +17,36 @@ export default function Database() {
 
     const createDatabase = async () => {
 
-    try {
+        try {
 
-        const response = await api.post(
-            "/database/create",
-            {
-                database_name: databaseName
-            }
-        );
+            const response = await api.post(
+                "/database/create",
+                {
+                    database_name: databaseName
+                }
+            );
 
-        toast.success("Database Created");
+            toast.success(
+                response.data.message || "Database Created Successfully"
+            );
 
-        console.log(response.data);
+            console.log(response.data);
 
-    } catch (error) {
+            setDatabaseName("");
 
-        toast.error("Database Creation Failed");
+        } catch (error) {
 
-        console.error(error);
+            console.error(error);
 
-    }
+            toast.error("Database Creation Failed");
 
-};
+        }
 
     };
 
     return (
 
-        <Box>
+        <Box sx={{ p: 3 }}>
 
             <Typography
                 variant="h4"
@@ -61,12 +63,12 @@ export default function Database() {
                         fullWidth
                         label="Database Name"
                         value={databaseName}
-                        onChange={(e)=>setDatabaseName(e.target.value)}
+                        onChange={(e) => setDatabaseName(e.target.value)}
+                        sx={{ mb: 2 }}
                     />
 
                     <Button
                         variant="contained"
-                        sx={{mt:2}}
                         onClick={createDatabase}
                     >
                         Create Database
